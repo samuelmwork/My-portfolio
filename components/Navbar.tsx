@@ -13,10 +13,14 @@ const links = [
 
 const scrollToChapter = (index: number) => {
   const vh = window.innerHeight;
-  let top = index * vh * 0.6;
-  const navbarOffset = 120;
+  // On mobile, the scroll distances might need adjustment or the navbar height might vary
+  const isMobile = window.innerWidth < 768;
+  const scrollPerChapter = vh * 0.6;
+  const navbarOffset = isMobile ? 80 : 100;
+  
+  let top = index * scrollPerChapter;
   top += navbarOffset;
-  console.log(`Scroll to chapter ${index}: top=${top}px (vh=${vh}, offset=${navbarOffset})`);
+  
   window.scrollTo({ top, behavior: "smooth" });
 };
 

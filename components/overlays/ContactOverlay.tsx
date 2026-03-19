@@ -72,7 +72,7 @@ const [submitted, setSubmitted] = useState(false);
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.5, ease }}
-        className="absolute inset-0 flex items-center px-6 md:px-16 py-24 overflow-y-auto"
+        className="absolute inset-0 flex items-center px-6 md:px-16 pt-24 md:pt-24 pb-12 overflow-y-auto custom-scrollbar"
       >
         <div className="w-full max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
 

@@ -10,7 +10,7 @@ export default function HeroOverlay({ progress }: { progress: number }) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0, y: -30 }}
       transition={{ duration: 0.7, ease }}
-      className="absolute inset-0 flex flex-col px-6 md:px-12 pt-28 pb-10"
+      className="absolute inset-0 flex flex-col px-6 md:px-12 pt-20 md:pt-28 pb-10"
     >
       {/* ── LEFT SIDE ── */}
       <div className="flex flex-col justify-center h-full max-w-lg">
@@ -22,7 +22,7 @@ export default function HeroOverlay({ progress }: { progress: number }) {
           transition={{ delay: 0.1, duration: 0.8, ease }}
         >
           <span
-            className="text-6xl md:text-8xl lg:text-9xl font-bold leading-none text-white"
+            className="text-5xl md:text-8xl lg:text-9xl font-bold leading-none text-white"
             style={{ fontFamily: "Playfair Display, serif" }}
           >
             Hi,
@@ -37,13 +37,13 @@ export default function HeroOverlay({ progress }: { progress: number }) {
           className="flex items-baseline gap-3 flex-wrap"
         >
           <span
-            className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight"
+            className="text-3xl md:text-6xl lg:text-7xl font-bold text-white leading-tight"
             style={{ fontFamily: "Playfair Display, serif" }}
           >
             I&apos;m{" "}
           </span>
           <span
-            className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight"
+            className="text-3xl md:text-6xl lg:text-7xl font-bold leading-tight"
             style={{ fontFamily: "Playfair Display, serif", color: "#E8472A" }}
           >
             Sam

@@ -90,3 +90,19 @@ body {
   80%{transform:translate(3%,35%)}
   90%{transform:translate(-10%,10%)}
 }
+/* Custom scrollbar for overlays */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 2px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(232,71,42,0.3);
+  border-radius: 10px;
+}
+/* Fix for Windows dropdown background */
+select option {
+  background-color: #0f0f0f;
+  color: white;
+}
