@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Send, X, CheckCircle, MessageCircle } from "lucide-react";
+import { Send, X, CheckCircle, MessageCircle, Mail, Phone, MapPin, ChevronDown } from "lucide-react";
 
 const ease = [0.22, 1, 0.36, 1];
 
@@ -11,7 +11,7 @@ const inputClass =
 const selectClass = inputClass + " appearance-none cursor-pointer";
 
 export default function ContactOverlay({ progress }: { progress: number }) {
-const [submitted, setSubmitted] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -72,167 +72,187 @@ const [submitted, setSubmitted] = useState(false);
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.5, ease }}
-        className="absolute inset-0 flex items-center px-6 md:px-16 pt-24 md:pt-24 pb-12 overflow-y-auto custom-scrollbar"
+        className="absolute inset-0 overflow-y-auto custom-scrollbar"
       >
-        <div className="w-full max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+        <div className="min-h-full flex items-start md:items-center justify-center px-6 md:px-16 pt-24 pb-12">
+          <div className="w-full max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
 
-          {/* LEFT */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.05, duration: 0.7, ease }}
-          >
-            <div className="flex items-center gap-3 mb-3">
-              <div className="h-px w-6 bg-accent" />
-              <span className="text-xs tracking-[0.3em] text-accent uppercase" style={{ fontFamily: "DM Mono" }}>
-                Contact
-              </span>
-            </div>
-            <h2
-              className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight"
-              style={{ fontFamily: "Playfair Display, serif" }}
+            {/* LEFT: Contact Info */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.1, duration: 0.7, ease }}
             >
-              Let&apos;s build
-              <br />
-              <em className="not-italic text-accent">your website.</em>
-            </h2>
-            <p className="text-sm text-white/40 leading-relaxed mb-8" style={{ fontFamily: "DM Sans" }}>
-              Fill out the form and I&apos;ll get back to you within{" "}
-              <span className="text-white/70">12 hours.</span> No spam, ever.
-            </p>
-
-            {/* Contact details */}
-            <div className="space-y-3">
-              {[
-                { label: "Email", val: "samuelm99729@gmail.com", href: "mailto:samuelm99729@gmail.com" },
-                { label: "Phone", val: "+91 63826 36384", href: "tel:+916382636384" },
-                { label: "WhatsApp", val: "wa.me/916382636384", href: "https://wa.me/916382636384" },
-              ].map((c) => (
-                <a
-                  key={c.label}
-                  href={c.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 group"
+              <div className="flex items-center gap-3 mb-4">
+                <div className="h-px w-6 bg-accent" />
+                <span 
+                  className="text-xs tracking-[0.3em] text-accent uppercase"
+                  style={{ fontFamily: "DM Mono" }}
                 >
-                  <span className="text-[10px] text-white/25 w-16" style={{ fontFamily: "DM Mono" }}>{c.label}</span>
-                  <span className="text-sm text-white/50 group-hover:text-accent transition-colors" style={{ fontFamily: "DM Sans" }}>{c.val}</span>
-                </a>
-              ))}
-            </div>
-
-            <div className="mt-8 pt-8 border-t border-white/5">
-              <a
-                href="https://wa.me/916382636384?text=Hi%20Sam!%20I%27m%20interested%20in%20getting%20a%20website%20for%20my%20business."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-3 bg-[#25D366]/10 border border-[#25D366]/25 text-[#25D366] text-sm font-medium rounded-full hover:bg-[#25D366]/20 transition-all"
-                style={{ fontFamily: "DM Sans" }}
+                  Get In Touch
+                </span>
+              </div>
+              <h2 
+                className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight"
+                style={{ fontFamily: "Playfair Display, serif" }}
               >
-                <MessageCircle size={14} />
-                Message me on WhatsApp
-              </a>
-            </div>
-          </motion.div>
+                Let&apos;s build something <br />
+                <em className="text-accent not-italic">extraordinary</em> together.
+              </h2>
+              <p className="text-white/40 text-sm mb-10 max-w-md leading-relaxed" style={{ fontFamily: "DM Sans" }}>
+                Have a project in mind or just want to say hi? Feel free to reach out. I&apos;m currently accepting new projects and collaborations.
+              </p>
 
-          {/* RIGHT — FORM */}
-          <motion.form
-            onSubmit={handleSubmit}
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.15, duration: 0.7, ease }}
-            className="space-y-4"
-          >
-            <div className="grid grid-cols-2 gap-3">
-              <div>
-                <label className="block text-[10px] text-white/30 mb-1.5" style={{ fontFamily: "DM Mono" }}>NAME *</label>
-                <input required className={inputClass} placeholder="Your name" value={name} onChange={(e) => setName(e.target.value)} />
-              </div>
-              <div>
-                <label className="block text-[10px] text-white/30 mb-1.5" style={{ fontFamily: "DM Mono" }}>WHATSAPP *</label>
-                <input required className={inputClass} placeholder="+91 98765..." value={phone} onChange={(e) => setPhone(e.target.value)} />
-              </div>
-            </div>
+              <div className="space-y-6">
+                <div className="flex items-center gap-4 group cursor-none">
+                  <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/8 flex items-center justify-center group-hover:bg-accent group-hover:border-accent transition-all duration-300">
+                    <Mail size={18} className="text-white/40 group-hover:text-white transition-colors" />
+                  </div>
+                  <div>
+                    <p className="text-[10px] text-white/20 uppercase tracking-widest mb-0.5" style={{ fontFamily: "DM Mono" }}>Email</p>
+                    <a href="mailto:samuelm99729@gmail.com" className="text-sm text-white/80 hover:text-accent transition-colors block">samuelm99729@gmail.com</a>
+                  </div>
+                </div>
 
-            <div>
-              <label className="block text-[10px] text-white/30 mb-1.5" style={{ fontFamily: "DM Mono" }}>EMAIL *</label>
-              <input required type="email" className={inputClass} placeholder="you@business.com" value={email} onChange={(e) => setEmail(e.target.value)} />
-            </div>
+                <div className="flex items-center gap-4 group cursor-none">
+                  <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/8 flex items-center justify-center group-hover:bg-accent group-hover:border-accent transition-all duration-300">
+                    <Phone size={18} className="text-white/40 group-hover:text-white transition-colors" />
+                  </div>
+                  <div>
+                    <p className="text-[10px] text-white/20 uppercase tracking-widest mb-0.5" style={{ fontFamily: "DM Mono" }}>Phone / WhatsApp</p>
+                    <a href="tel:+916382636384" className="text-sm text-white/80 hover:text-accent transition-colors block">+91 63826 36384</a>
+                  </div>
+                </div>
 
-            <div className="grid grid-cols-2 gap-3">
-              <div>
-                <label className="block text-[10px] text-white/30 mb-1.5" style={{ fontFamily: "DM Mono" }}>BUSINESS TYPE</label>
-                <select className={selectClass} value={business_type} onChange={(e) => setBusinessType(e.target.value)}>
-                  <option value="">Select...</option>
-                  <option>Salon / Spa</option>
-                  <option>Gym / Fitness</option>
-                  <option>Clinic / Healthcare</option>
-                  <option>Restaurant / Cafe</option>
-                  <option>Retail Shop</option>
-                  <option>Education</option>
-                  <option>Other</option>
-                </select>
+                <div className="flex items-center gap-4 group cursor-none">
+                  <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/8 flex items-center justify-center group-hover:bg-accent group-hover:border-accent transition-all duration-300">
+                    <MapPin size={18} className="text-white/40 group-hover:text-white transition-colors" />
+                  </div>
+                  <div>
+                    <p className="text-[10px] text-white/20 uppercase tracking-widest mb-0.5" style={{ fontFamily: "DM Mono" }}>Location</p>
+                    <p className="text-sm text-white/80">Tamil Nadu, India</p>
+                  </div>
+                </div>
               </div>
-              <div>
-                <label className="block text-[10px] text-white/30 mb-1.5" style={{ fontFamily: "DM Mono" }}>SERVICE</label>
-                <select className={selectClass} value={service} onChange={(e) => setService(e.target.value)}>
-                  <option value="">Select...</option>
-                  <option>Business Website</option>
-                  <option>Booking System</option>
-                  <option>Landing Page</option>
-                  <option>Custom Solution</option>
-                </select>
-              </div>
-            </div>
+            </motion.div>
 
-            <div className="grid grid-cols-2 gap-3">
-              <div>
-                <label className="block text-[10px] text-white/30 mb-1.5" style={{ fontFamily: "DM Mono" }}>BUDGET</label>
-                <select className={selectClass} value={budget} onChange={(e) => setBudget(e.target.value)}>
-                  <option value="">Select...</option>
-                  <option>₹1k – ₹3k</option>
-                  <option>₹3k – ₹7k</option>
-                  <option>₹7k – ₹15k</option>
-                  <option>₹15k+</option>
-                </select>
-              </div>
-              <div>
-                <label className="block text-[10px] text-white/30 mb-1.5" style={{ fontFamily: "DM Mono" }}>TIMELINE</label>
-                <select className={selectClass} value={timeline} onChange={(e) => setTimeline(e.target.value)}>
-                  <option value="">Select...</option>
-                  <option>ASAP (1–2 weeks)</option>
-                  <option>1 month</option>
-                  <option>2–3 months</option>
-                  <option>No rush</option>
-                </select>
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-[10px] text-white/30 mb-1.5" style={{ fontFamily: "DM Mono" }}>DETAILS</label>
-              <textarea
-                className={inputClass + " resize-none h-24"}
-                placeholder="Tell me about your business and what you need..."
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-              />
-            </div>
-
-            <motion.button
-              type="submit"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.97 }}
-              disabled={loading}
-              className="w-full flex items-center justify-center gap-2 py-3.5 bg-accent text-white font-semibold rounded-full text-sm hover:bg-[#ff5a3d] transition-all hover:shadow-[0_0_30px_rgba(232,71,42,0.4)] disabled:opacity-60"
-              style={{ fontFamily: "DM Sans" }}
+            {/* RIGHT: Submission Form */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2, duration: 0.7, ease }}
+              className="bg-white/3 border border-white/5 rounded-3xl p-6 md:p-8 backdrop-blur-md"
             >
-              {loading ? (
-                <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-              ) : (
-                <><Send size={14} /> Send Request</>
-              )}
-            </motion.button>
-          </motion.form>
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="space-y-1.5">
+                    <label className="text-[10px] text-white/30 uppercase tracking-wider ml-1" style={{ fontFamily: "DM Mono" }}>Name</label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="Sam"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      className={inputClass}
+                      style={{ fontFamily: "DM Sans" }}
+                    />
+                  </div>
+                  <div className="space-y-1.5">
+                    <label className="text-[10px] text-white/30 uppercase tracking-wider ml-1" style={{ fontFamily: "DM Mono" }}>WhatsApp</label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="+91 98765..."
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      className={inputClass}
+                      style={{ fontFamily: "DM Sans" }}
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-1.5">
+                  <label className="text-[10px] text-white/30 uppercase tracking-wider ml-1" style={{ fontFamily: "DM Mono" }}>Email</label>
+                  <input
+                    type="email"
+                    required
+                    placeholder="you@example.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className={inputClass}
+                    style={{ fontFamily: "DM Sans" }}
+                  />
+                </div>
+
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="space-y-1.5">
+                    <label className="text-[10px] text-white/30 uppercase tracking-wider ml-1" style={{ fontFamily: "DM Mono" }}>Project Type</label>
+                    <div className="relative">
+                      <select
+                        value={service}
+                        onChange={(e) => setService(e.target.value)}
+                        className={selectClass}
+                        style={{ fontFamily: "DM Sans" }}
+                      >
+                        <option value="">Select...</option>
+                        <option value="Landing Page">Landing Page</option>
+                        <option value="Booking System">Booking System</option>
+                        <option value="Business Website">Business Website</option>
+                        <option value="Custom Solution">Custom Solution</option>
+                      </select>
+                      <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-white/20 pointer-events-none" size={14} />
+                    </div>
+                  </div>
+                  <div className="space-y-1.5">
+                    <label className="text-[10px] text-white/30 uppercase tracking-wider ml-1" style={{ fontFamily: "DM Mono" }}>Budget</label>
+                    <div className="relative">
+                      <select
+                        value={budget}
+                        onChange={(e) => setBudget(e.target.value)}
+                        className={selectClass}
+                        style={{ fontFamily: "DM Sans" }}
+                      >
+                        <option value="">Select...</option>
+                        <option value="₹1k-3k">₹1k-3k</option>
+                        <option value="₹3k-7k">₹3k-7k</option>
+                        <option value="₹7k+">₹7k+</option>
+                      </select>
+                      <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-white/20 pointer-events-none" size={14} />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-1.5">
+                  <label className="text-[10px] text-white/30 uppercase tracking-wider ml-1" style={{ fontFamily: "DM Mono" }}>Message</label>
+                  <textarea
+                    required
+                    rows={4}
+                    placeholder="Tell me about your project..."
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                    className={inputClass + " resize-none h-24"}
+                    style={{ fontFamily: "DM Sans" }}
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="w-full bg-accent text-white py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-[#ff5a3d] hover:shadow-[0_0_25px_rgba(232,71,42,0.4)] disabled:opacity-60 transition-all duration-300"
+                  style={{ fontFamily: "DM Sans" }}
+                >
+                  {loading ? (
+                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                  ) : (
+                    <>
+                      Send Message
+                      <Send size={16} />
+                    </>
+                  )}
+                </button>
+              </form>
+            </motion.div>
+          </div>
         </div>
       </motion.div>
 
@@ -247,40 +267,29 @@ const [submitted, setSubmitted] = useState(false);
             onClick={() => setSubmitted(false)}
           >
             <motion.div
-              initial={{ scale: 0.7, opacity: 0, y: 40 }}
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.7, opacity: 0 }}
-              transition={{ type: "spring", damping: 18, stiffness: 280 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="bg-[#0f0f0f] border border-accent/30 p-8 rounded-3xl max-w-sm w-full text-center relative"
               onClick={(e) => e.stopPropagation()}
-              className="bg-[#0f0f0f] border border-accent/30 rounded-3xl p-10 max-w-sm w-full text-center shadow-[0_0_80px_rgba(232,71,42,0.2)] relative"
             >
-              <button onClick={() => setSubmitted(false)} className="absolute top-4 right-4 text-white/20 hover:text-white">
+              <button 
+                onClick={() => setSubmitted(false)} 
+                className="absolute top-4 right-4 text-white/20 hover:text-white transition-colors"
+              >
                 <X size={16} />
               </button>
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: 0.2, type: "spring", damping: 12 }}
-                className="w-14 h-14 rounded-full bg-accent/15 border border-accent/30 flex items-center justify-center mx-auto mb-5"
+              <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                <CheckCircle className="text-accent" size={32} />
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-2" style={{ fontFamily: "Playfair Display, serif" }}>Message Sent!</h3>
+              <p className="text-white/40 text-sm mb-8" style={{ fontFamily: "DM Sans" }}>Thanks for reaching out. I&apos;ll get back to you within 24 hours.</p>
+              <button
+                onClick={() => setSubmitted(false)}
+                className="w-full py-3 bg-white/5 border border-white/10 rounded-xl text-white font-semibold hover:bg-white/10 transition-all border-none"
               >
-                <CheckCircle size={24} className="text-accent" />
-              </motion.div>
-              <h3 className="text-xl font-bold text-white mb-2" style={{ fontFamily: "Playfair Display, serif" }}>
-                Request received! 🎉
-              </h3>
-              <p className="text-sm text-white/50 mb-6 leading-relaxed" style={{ fontFamily: "DM Sans" }}>
-                I&apos;ll contact you within{" "}
-                <span className="text-accent font-semibold">12 hours</span> to discuss your project.
-              </p>
-              <a
-                href="https://wa.me/916382636384?text=Hi%20Sam!%20I%20just%20submitted%20a%20request."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 w-full py-3 bg-[#25D366]/10 border border-[#25D366]/25 text-[#25D366] text-sm font-medium rounded-full hover:bg-[#25D366]/20 transition-all"
-              >
-                <MessageCircle size={13} />
-                Ping me on WhatsApp to speed things up
-              </a>
+                Close
+              </button>
             </motion.div>
           </motion.div>
         )}
