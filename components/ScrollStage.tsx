@@ -41,10 +41,9 @@ export default function ScrollStage() {
       const vh = window.innerHeight;
       const scrollPerChapter = vh * SCROLL_PER_CHAPTER;
       // totalScroll now includes a full extra chapter worth so the last chapter is reachable
-      const totalScroll = scrollPerChapter * TOTAL;
+      const totalScroll = scrollPerChapter * (TOTAL - 0.2);
       const clamped = Math.max(0, Math.min(scrollTop, totalScroll));
       const chapterFloat = clamped / scrollPerChapter;
-      // clamp index to 0..TOTAL-1
       const chapterIndex = Math.min(Math.floor(chapterFloat), TOTAL - 1);
       const chapterProgress = chapterFloat - chapterIndex;
 
@@ -84,7 +83,7 @@ export default function ScrollStage() {
       {/* Scroll container: (TOTAL + 1) chapters worth so last chapter is fully reachable */}
       <div
         ref={containerRef}
-        style={{ height: `${(TOTAL + 1) * SCROLL_PER_CHAPTER * 100}vh` }}
+        style={{ height: `${(TOTAL * SCROLL_PER_CHAPTER * 100) + 120}vh` }}
         className="relative"
       >
         {/* ── STICKY FRAME ── */}
