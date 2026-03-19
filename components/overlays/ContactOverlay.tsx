@@ -186,36 +186,59 @@ export default function ContactOverlay({ progress }: { progress: number }) {
 
                 <div className="grid grid-cols-2 gap-3">
                   <div className="space-y-1.5">
-                    <label className="text-[10px] text-white/30 uppercase tracking-wider ml-1" style={{ fontFamily: "DM Mono" }}>Project Type</label>
+                    <label className="block text-[10px] text-white/30 mb-1.5 ml-1" style={{ fontFamily: "DM Mono" }}>BUSINESS TYPE</label>
                     <div className="relative">
-                      <select
-                        value={service}
-                        onChange={(e) => setService(e.target.value)}
-                        className={selectClass}
-                        style={{ fontFamily: "DM Sans" }}
-                      >
+                      <select className={selectClass} value={business_type} onChange={(e) => setBusinessType(e.target.value)} style={{ fontFamily: "DM Sans" }}>
                         <option value="">Select...</option>
-                        <option value="Landing Page">Landing Page</option>
-                        <option value="Booking System">Booking System</option>
-                        <option value="Business Website">Business Website</option>
-                        <option value="Custom Solution">Custom Solution</option>
+                        <option>Salon / Spa</option>
+                        <option>Gym / Fitness</option>
+                        <option>Clinic / Healthcare</option>
+                        <option>Restaurant / Cafe</option>
+                        <option>Retail Shop</option>
+                        <option>Education</option>
+                        <option>Other</option>
                       </select>
                       <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-white/20 pointer-events-none" size={14} />
                     </div>
                   </div>
                   <div className="space-y-1.5">
-                    <label className="text-[10px] text-white/30 uppercase tracking-wider ml-1" style={{ fontFamily: "DM Mono" }}>Budget</label>
+                    <label className="block text-[10px] text-white/30 mb-1.5 ml-1" style={{ fontFamily: "DM Mono" }}>SERVICE</label>
                     <div className="relative">
-                      <select
-                        value={budget}
-                        onChange={(e) => setBudget(e.target.value)}
-                        className={selectClass}
-                        style={{ fontFamily: "DM Sans" }}
-                      >
+                      <select className={selectClass} value={service} onChange={(e) => setService(e.target.value)} style={{ fontFamily: "DM Sans" }}>
                         <option value="">Select...</option>
-                        <option value="₹1k-3k">₹1k-3k</option>
-                        <option value="₹3k-7k">₹3k-7k</option>
-                        <option value="₹7k+">₹7k+</option>
+                        <option>Business Website</option>
+                        <option>Booking System</option>
+                        <option>Landing Page</option>
+                        <option>Custom Solution</option>
+                      </select>
+                      <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-white/20 pointer-events-none" size={14} />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="space-y-1.5">
+                    <label className="block text-[10px] text-white/30 mb-1.5 ml-1" style={{ fontFamily: "DM Mono" }}>BUDGET</label>
+                    <div className="relative">
+                      <select className={selectClass} value={budget} onChange={(e) => setBudget(e.target.value)} style={{ fontFamily: "DM Sans" }}>
+                        <option value="">Select...</option>
+                        <option>₹1k – ₹3k</option>
+                        <option>₹3k – ₹7k</option>
+                        <option>₹7k – ₹15k</option>
+                        <option>₹15k+</option>
+                      </select>
+                      <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-white/20 pointer-events-none" size={14} />
+                    </div>
+                  </div>
+                  <div className="space-y-1.5">
+                    <label className="block text-[10px] text-white/30 mb-1.5 ml-1" style={{ fontFamily: "DM Mono" }}>DEADLINE (TIMELINE)</label>
+                    <div className="relative">
+                      <select className={selectClass} value={timeline} onChange={(e) => setTimeline(e.target.value)} style={{ fontFamily: "DM Sans" }}>
+                        <option value="">Select...</option>
+                        <option>ASAP (1–2 weeks)</option>
+                        <option>1 month</option>
+                        <option>2–3 months</option>
+                        <option>No rush</option>
                       </select>
                       <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-white/20 pointer-events-none" size={14} />
                     </div>
