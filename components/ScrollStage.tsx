@@ -3,6 +3,7 @@
 import { useRef, useEffect, useState } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { Instagram } from "lucide-react";  // fallback SVG if needed
 import HeroOverlay from "./overlays/HeroOverlay";
 import WorkOverlay from "./overlays/WorkOverlay";
 import ProcessOverlay from "./overlays/ProcessOverlay";
@@ -195,9 +196,17 @@ export default function ScrollStage() {
       {/* Footer after scroll */}
       <footer className="bg-[#050505] border-t border-white/5 px-8 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-2">
-          <span style={{ fontFamily: "Playfair Display, serif", fontWeight: 700, fontSize: "1.2rem" }}>Sam</span>
-          <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-          <span className="text-white/30 text-xs ml-1">Web Developer</span>
+          <Image
+            src="/Logo.png"
+            alt="SamGrowth Studio"
+            width={28}
+            height={28}
+            className="flex-shrink-0 rounded-sm"
+          />
+          <div>
+            <span style={{ fontFamily: "Playfair Display, serif", fontWeight: 700, fontSize: "1rem" }}>SamGrowth Studio</span>
+            <span className="text-white/30 text-xs ml-1">Web Developer</span>
+          </div>
         </div>
         <span className="text-white/20 text-xs" style={{ fontFamily: "DM Mono" }}>
           — India
@@ -206,6 +215,14 @@ export default function ScrollStage() {
           <a href="mailto:samuelm99729@gmail.com" className="hover:text-accent transition-colors">Email</a>
           <a href="https://wa.me/916382636384" className="hover:text-accent transition-colors">WhatsApp</a>
           <a href="tel:+916382636384" className="hover:text-accent transition-colors">Call</a>
+          <a href="https://www.instagram.com/samgrowth_studio?igsh=MWlkcW9rcTNmZDh0Mg==" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors flex items-center gap-1 group" title="Instagram">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="group-hover:scale-110 transition-transform drop-shadow-sm">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/>
+            </svg>
+            Instagram
+          </a>
         </div>
       </footer>
     </>
