@@ -12,7 +12,7 @@ export default function WhatsAppButton() {
       transition={{ delay: 2.5, type: "spring", damping: 14 }}
       whileHover={{ scale: 1.12 }}
       whileTap={{ scale: 0.92 }}
-      className="fixed bottom-7 right-7 z-50 w-13 h-13 flex items-center justify-center"
+      className="fixed bottom-20 right-7 z-50 w-13 h-13 flex items-center justify-center"
       style={{ width: 52, height: 52 }}
       aria-label="WhatsApp"
     >
