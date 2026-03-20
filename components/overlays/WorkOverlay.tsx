@@ -37,6 +37,14 @@ const projects = [
     url: "https://plant-awareness.onrender.com/",
     color: "#00C9B1",
   },
+  {
+    num: "05",
+    title: "Elara — Premium Fashion",
+    tag: "E-Commerce",
+    desc: "A premium fashion studio website featuring curated collections and custom styling services.",
+    url: "https://dress-shop-nine.vercel.app/",
+    color: "#E8472A",
+  },
 ];
 
 export default function WorkOverlay({ progress }: { progress: number }) {
