@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
@@ -42,20 +43,44 @@ export default function Navbar() {
       >
         {/* Logo */}
         <a href="#" className="flex items-center gap-2 group">
-          <span style={{ fontFamily: "Playfair Display, serif", fontSize: "1.4rem", fontWeight: 700, letterSpacing: "-0.02em" }}>
-            Sam
+          <Image
+            src="/Logo.png"
+            alt="SamGrowth Studio"
+            width={48}
+            height={48}
+            className="group-hover:scale-110 transition-transform flex-shrink-0 rounded-sm object-contain"
+          />
+          <span
+            className="text-accent"
+            style={{ fontFamily: "Playfair Display, serif", fontSize: "0.875rem", fontWeight: 700, letterSpacing: "-0.02em" }}
+          >
+            SamGrowth Studio
           </span>
-          <span className="w-1.5 h-1.5 rounded-full bg-accent mt-1 group-hover:scale-150 transition-transform" />
         </a>
 
-        {/* Center email */}
-        <a
-          href="mailto:samuelm99729@gmail.com"
-          className="hidden md:block text-xs text-white/40 hover:text-white transition-colors"
-          style={{ fontFamily: "DM Mono, monospace" }}
-        >
-          samuelm99729@gmail.com
-        </a>
+        {/* Center links */}
+        <div className="hidden md:flex items-center gap-6">
+          <a
+            href="mailto:samuelm99729@gmail.com"
+            className="text-xs text-white/40 hover:text-white transition-colors"
+            style={{ fontFamily: "DM Mono, monospace" }}
+          >
+            samuelm99729@gmail.com
+          </a>
+          <a
+            href="https://www.instagram.com/samgrowth_studio?igsh=MWlkcW9rcTNmZDh0Mg=="
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white/40 hover:text-accent p-1.5 rounded transition-all hover:scale-110"
+            title="Instagram"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="drop-shadow-sm">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
+              <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/>
+            </svg>
+          </a>
+        </div>
 
         {/* Hamburger */}
         <button onClick={() => setOpen(!open)} className="text-white/70 hover:text-white transition-colors">

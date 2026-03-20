@@ -133,6 +133,20 @@ export default function ContactOverlay({ progress }: { progress: number }) {
                     <p className="text-sm text-white/80">Tamil Nadu, India</p>
                   </div>
                 </div>
+
+                <div className="flex items-center gap-4 group cursor-none">
+                  <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/8 flex items-center justify-center group-hover:bg-accent group-hover:border-accent transition-all duration-300">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" className="text-white/40 group-hover:text-white transition-colors">
+                      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                      <circle cx="12" cy="12" r="4"/>
+                      <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-[10px] text-white/20 uppercase tracking-widest mb-0.5" style={{ fontFamily: "DM Mono" }}>Instagram</p>
+                    <a href="https://www.instagram.com/samgrowth_studio?igsh=MWlkcW9rcTNmZDh0Mg==" target="_blank" rel="noopener noreferrer" className="text-sm text-white/80 hover:text-accent transition-colors block">samgrowth_studio</a>
+                  </div>
+                </div>
               </div>
             </motion.div>
 
