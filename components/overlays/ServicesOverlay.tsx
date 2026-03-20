@@ -28,6 +28,12 @@ const services = [
     benefit: "Have a unique idea? I can build it exactly",
     tags: ["APIs", "Dashboards", "Payments"],
   },
+  {
+    icon: "🗄️",
+    title: "Database Maintenance",
+    benefit: "Keep your data secure, optimized, and backed up always",
+    tags: ["Backups", "Optimization", "Security"],
+  },
 ];
 
 export default function ServicesOverlay({ progress }: { progress: number }) {

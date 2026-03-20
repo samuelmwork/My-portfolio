@@ -9,7 +9,7 @@ const plans = [
     name: "Starter",
     price: "₹1k–3k",
     desc: "Get online fast",
-    features: ["5-page responsive site", "Mobile-first", "Contact form", "Basic SEO", "1-week delivery"],
+    features: ["5-page responsive site", "Mobile-first", "Contact form", "1-week delivery"],
     hot: false,
   },
   {
